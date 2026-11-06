@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ជូនចំពោះ Lanh 🤍</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for premium look (Kantumruy Pro for Khmer, Playfair Display for elegant serif headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Alex+Brush&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        khmer: ['"Kantumruy Pro"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        cursive: ['"Alex Brush"', 'cursive'],
+                    },
+                    colors: {
+                        romantic: {
+                            dark: '#05010d',
+                            card: 'rgba(15, 6, 28, 0.65)',
+                            pink: '#f43f5e',
+                            rose: '#fda4af',
+                            purple: '#a855f7',
+                            soft: '#fbcfe8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: "Kantumruy Pro", sans-serif;
+            background-color: #05010d;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05010d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(244, 63, 94, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(244, 63, 94, 0.6);
+        }
+
+        /* Glassmorphism utility classes */
+        .glass-panel {
+            background: rgba(20, 10, 35, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(244, 63, 94, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-panel-heavy {
+            background: rgba(15, 5, 25, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(244, 63, 94, 0.25);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(30, 15, 45, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(244, 63, 94, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(244, 63, 94, 0.08);
+            border-color: rgba(244, 63, 94, 0.35);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(244, 63, 94, 0.15);
+        }
+
+        /* Ambient glow effects */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(244, 63, 94, 0.6), 0 0 20px rgba(244, 63, 94, 0.3);
+        }
+
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6), 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .shadow-glow {
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.35);
+        }
+
+        .shadow-glow-purple {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+        }
+
+        /* Timelines elements */
+        .timeline-line {
+            background: linear-gradient(to bottom, rgba(244, 63, 94, 0.1), rgba(244, 63, 94, 1), rgba(168, 85, 247, 1), rgba(244, 63, 94, 0.1));
+        }
+
+        /* Typewriter Cursor */
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Custom transition for scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glowing mouse cursor */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(244,63,94,1) 0%, rgba(244,63,94,0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            mix-blend-mode: screen;
+        }
+
+        #custom-cursor-blur {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(244,63,94,0.06) 0%, rgba(168,85,247,0.03) 50%, rgba(0,0,0,0) 100%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Hidden standard cursor on desktops with hover capability */
+        @media (min-width: 1024px) {
+            body {
+                cursor: none;
+            }
+            a, button, .interactive-card {
+                cursor: none;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen relative antialiased selection:bg-rose-500/30 selection:text-white">
+
+    <!-- Floating particles, stars and hearts background canvas -->
+    <canvas id="ambient-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Custom Glowing Cursors (Visible on Desktops) -->
+    <div id="custom-cursor" class="hidden lg:block"></div>
+    <div id="custom-cursor-blur" class="hidden lg:block"></div>
+
+    <!-- Music Control Panel -->
+    <div class="fixed top-5 right-5 z-50 flex items-center gap-3">
+        <div id="music-indicator" class="hidden md:flex items-center gap-1 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-rose-500/20 text-xs text-rose-300">
+            <span class="w-1.5 h-3 bg-rose-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></span>
+            <span class="w-1.5 h-4 bg-rose-400 rounded-full animate-bounce" style="animation-delay: 0.3s"></span>
+            <span class="w-1.5 h-2 bg-rose-500 rounded-full animate-bounce" style="animation-delay: 0.5s"></span>
+            <span class="ml-1 text-[10px] tracking-wider uppercase">ភ្លេងស្នេហា</span>
+        </div>
+        <button id="music-btn" class="w-12 h-12 rounded-full glass-panel flex items-center justify-center hover:border-rose-500/50 hover:scale-105 active:scale-95 transition-all text-rose-400 shadow-glow" aria-label="ការគ្រប់គ្រងតន្ត្រី">
+            <!-- Play Icon -->
+            <svg id="play-icon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <!-- Pause Icon (Hidden initially) -->
+            <svg id="pause-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden px-4 z-10">
+        <!-- Ambient Glowing Background shapes -->
+        <div class="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-rose-900/10 blur-[120px] top-1/4 left-10 md:left-1/4 animate-pulse duration-[6000ms]"></div>
+        <div class="absolute w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-purple-900/15 blur-[100px] bottom-1/4 right-10 md:right-1/4 animate-pulse duration-[8000ms]"></div>
+
+        <div class="max-w-4xl text-center z-10 space-y-6 md:space-y-8 px-2">
+            <!-- Scent Decoration -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs md:text-sm tracking-widest uppercase animate-fade-in">
+                <span>✨</span> សារលាក់ទុកក្នុងបេះដូង <span>✨</span>
+            </div>
+
+            <!-- Main Romantic Heading -->
+            <h1 class="text-7xl md:text-9xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-rose-400 to-purple-300 text-glow leading-tight select-none">
+                Lanh <span class="text-rose-500 text-5xl md:text-7xl inline-block animate-pulse align-middle">🤍</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base md:text-2xl font-light tracking-wide text-rose-100 max-w-2xl mx-auto leading-relaxed px-4">
+                "មានអារម្មណ៍ខ្លះ... ដែលមិនអាចលាក់ទុកក្នុងបេះដូងបានទៀតឡើយ។"
+            </p>
+
+            <!-- Call to Action Button -->
+            <div class="pt-8">
+                <a href="#message-section" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-rose-600 to-purple-600 hover:from-rose-500 hover:to-purple-500 text-white font-medium tracking-wide transition-all duration-300 hover:scale-105 active:scale-95 shadow-glow hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] group">
+                    <span>បើកសំបុត្រពីបេះដូង</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Wave Scroll Indicator on Bottom -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-70">
+            <span class="text-[10px] tracking-widest text-rose-300 uppercase font-light">អូសចុះក្រោម</span>
+            <div class="w-[20px] h-[35px] border-2 border-rose-500/30 rounded-full p-1">
+                <div class="w-1.5 h-1.5 bg-rose-500 rounded-full mx-auto animate-bounce"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: សារពីបេះដូង -->
+    <section id="message-section" class="py-24 md:py-32 relative z-10 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal glass-panel rounded-3xl p-8 md:p-16 relative overflow-hidden">
+                <!-- Decorative Top Border Glow -->
+                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500 to-transparent"></div>
+                
+                <!-- Section Title -->
+                <div class="flex flex-col items-center mb-8 md:mb-12">
+                    <span class="text-rose-500 text-3xl mb-2">✉️</span>
+                    <h2 class="text-2xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-rose-300 font-serif">សារពីបេះដូង</h2>
+                    <div class="w-12 h-1 bg-rose-500/30 rounded-full mt-3"></div>
+                </div>
+
+                <!-- Typewriter Message Body Container -->
+                <div class="text-left space-y-6 text-slate-200 leading-relaxed text-sm md:text-lg min-h-[250px] font-light">
+                    <!-- Typing target elements -->
+                    <div id="typewriter-container" class="space-y-4">
+                        <!-- Message printed dynamically through JS -->
+                        <span id="typed-text" class="whitespace-pre-line"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: ហេតុអ្វីបានជាបងស្រឡាញ់អូន -->
+    <section class="py-20 relative z-10 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex flex-col items-center mb-16 reveal">
+                <span class="text-rose-500 text-3xl mb-2">💖</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-rose-300 font-serif">ហេតុអ្វីបានជាបងស្រឡាញ់អូន?</h2>
+                <p class="text-xs md:text-sm text-rose-300/80 mt-2 font-light">រាល់ទង្វើ និងភាពស្រស់ស្អាតរបស់អូនដែលដក់ជាប់ក្នុងចិត្តរបស់បង</p>
+                <div class="w-12 h-1 bg-rose-500/30 rounded-full mt-3"></div>
+            </div>
+
+            <!-- Grid Layout of 4 Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Card 1 -->
+                <div class="reveal glass-card rounded-2xl p-8 relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 text-rose-500/5 group-hover:text-rose-500/10 transition-colors transform group-hover:scale-125 duration-700 text-8xl">
+                        ❤️
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-3xl">😊</span>
+                        <h3 class="text-xl font-semibold text-rose-200 font-serif">ស្នាមញញឹមរបស់អូន</h3>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                        ស្នាមញញឹមរបស់អូនប្រៀបដូចជាពន្លឺព្រះអាទិត្យដ៏ទន់ភ្លន់ ដែលអាចរំលាយរាល់ភាពសោកសៅក្នុងបេះដូងរបស់បង។ រាល់ពេលដែលបានឃើញអូនញញឹម វាគឺជាពេលវេលាដ៏មានតម្លៃបំផុត។
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="reveal glass-card rounded-2xl p-8 relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 text-rose-500/5 group-hover:text-rose-500/10 transition-colors transform group-hover:scale-125 duration-700 text-8xl">
+                        ❤️
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-3xl">🌸</span>
+                        <h3 class="text-xl font-semibold text-rose-200 font-serif">ភាពស្លូតបូតរបស់អូន</h3>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                        ភាពស្លូតបូត និងចិត្តគំនិតដ៏ល្អបរិសុទ្ធរបស់អូនធ្វើឱ្យមនុស្សគ្រប់គ្នាដែលនៅក្បែរមានអារម្មណ៍កក់ក្តៅ និងមានសេចក្តីសុខ។ ភាពទន់ភ្លន់របស់អូនធ្វើឱ្យចិត្តបងចង់ថែរក្សាក្បែរមិនឃ្លាតឡើយ។
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="reveal glass-card rounded-2xl p-8 relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 text-rose-500/5 group-hover:text-rose-500/10 transition-colors transform group-hover:scale-125 duration-700 text-8xl">
+                        ❤️
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-3xl">💎</span>
+                        <h3 class="text-xl font-semibold text-rose-200 font-serif">ភាពរឹងមាំរបស់អូន</h3>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                        ទោះបីជាអតីតកាលបន្សល់ទុកនូវស្នាមរបួស និងការលំបាកយ៉ាងណាក៏ដោយ ក៏អូននៅតែរឹងមាំ និងដើរទៅមុខដោយស្នាមញញឹម។ ភាពអត់ធ្មត់របស់អូនគឺជាអ្វីដែលបងគោរពបំផុត។
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="reveal glass-card rounded-2xl p-8 relative overflow-hidden group">
+                    <div class="absolute -right-8 -bottom-8 text-rose-500/5 group-hover:text-rose-500/10 transition-colors transform group-hover:scale-125 duration-700 text-8xl">
+                        ❤️
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-3xl">🌹</span>
+                        <h3 class="text-xl font-semibold text-rose-200 font-serif">អូនធ្វើឱ្យបងស្គាល់ស្នេហ៍ពិត</h3>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                        វត្តមានរបស់អូនបង្រៀនឱ្យបងយល់ច្បាស់ពីន័យពិតនៃសេចក្តីស្រឡាញ់។ គឺការចេះផ្តល់ឱ្យ ការរង់ចាំដោយអត់ធ្មត់ ការបារម្ភពិតប្រាកដ និងការចង់ឃើញមនុស្សដែលយើងស្រឡាញ់មានក្តីសុខ។
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: បងយល់ពីបេះដូងរបស់អូន -->
+    <section class="py-20 relative z-10 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex flex-col items-center mb-16 reveal">
+                <span class="text-purple-500 text-3xl mb-2">🕊️</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-300 font-serif">បងយល់ពីបេះដូងរបស់អូន</h2>
+                <p class="text-xs md:text-sm text-rose-300/80 mt-2 font-light">ដំណើរនៃការព្យាបាល និងការចាប់ផ្តើមថ្មី</p>
+                <div class="w-12 h-1 bg-purple-500/30 rounded-full mt-3"></div>
+            </div>
+
+            <!-- Timeline Vertical Construction -->
+            <div class="relative">
+                <!-- Vertical Progress Line -->
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 timeline-line rounded-full"></div>
+
+                <!-- Timeline Step 1 -->
+                <div class="reveal flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative">
+                    <div class="md:w-[45%] text-left md:text-right pl-12 md:pl-0">
+                        <h3 class="text-lg md:text-xl font-semibold text-purple-300">អតីតកាល</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed font-light">
+                            ទំព័រជីវិតដែលធ្លាប់ជួបប្រទះការខកចិត្ត និងការឈឺចាប់ជាច្រើនលើកដែលបន្សល់ទុកនូវការភ័យខ្លាច។
+                        </p>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-2 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#05010d] shadow-glow-purple z-10"></div>
+                    <div class="md:w-[45%] hidden md:block"></div>
+                </div>
+
+                <!-- Timeline Step 2 -->
+                <div class="reveal flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-12 relative">
+                    <div class="md:w-[45%] text-left pl-12 md:pl-0">
+                        <h3 class="text-lg md:text-xl font-semibold text-rose-300">ស្នាមរបួស</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed font-light">
+                            បេះដូងដែលនៅតែមានភាពភ័យខ្លាច ខ្លាចការលះបង់ និងការចាប់ផ្តើមជាថ្មីដែលនាំមកនូវការខកចិត្តម្តងទៀត។
+                        </p>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-2 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-rose-500 border-4 border-[#05010d] shadow-glow z-10"></div>
+                    <div class="md:w-[45%] hidden md:block"></div>
+                </div>
+
+                <!-- Timeline Step 3 -->
+                <div class="reveal flex flex-col md:flex-row items-start md:items-center justify-between mb-12 relative">
+                    <div class="md:w-[45%] text-left md:text-right pl-12 md:pl-0">
+                        <h3 class="text-lg md:text-xl font-semibold text-purple-300">ការព្យាបាល</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed font-light">
+                            បងនឹងមិនបង្ខំឡើយ។ បងចង់ឱ្យពេលវេលា និងភាពស្មោះត្រង់របស់បងធ្វើជាថ្នាំព្យាបាលថ្នមៗដល់បេះដូងអូន។
+                        </p>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-2 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#05010d] shadow-glow-purple z-10"></div>
+                    <div class="md:w-[45%] hidden md:block"></div>
+                </div>
+
+                <!-- Timeline Step 4 -->
+                <div class="reveal flex flex-col md:flex-row-reverse items-start md:items-center justify-between mb-12 relative">
+                    <div class="md:w-[45%] text-left pl-12 md:pl-0">
+                        <h3 class="text-lg md:text-xl font-semibold text-rose-300">ក្តីសង្ឃឹម</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed font-light">
+                            សង្ឃឹមថានឹងឃើញស្នាមញញឹមដ៏បរិសុទ្ធដោយគ្មានការលាក់លៀមការឈឺចាប់តទៅទៀត។
+                        </p>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-2 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-rose-500 border-4 border-[#05010d] shadow-glow z-10"></div>
+                    <div class="md:w-[45%] hidden md:block"></div>
+                </div>
+
+                <!-- Timeline Step 5 -->
+                <div class="reveal flex flex-col md:flex-row items-start md:items-center justify-between relative">
+                    <div class="md:w-[45%] text-left md:text-right pl-12 md:pl-0">
+                        <h3 class="text-lg md:text-xl font-semibold text-emerald-400">ការចាប់ផ្តើមថ្មី</h3>
+                        <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed font-light">
+                            នៅពេលណាដែលអូនមានភាពជឿជាក់ និងរួចរាល់... បេះដូងថ្មីនឹងបើកទទួលយកពន្លឺដ៏ស្រស់បំព្រង។
+                        </p>
+                    </div>
+                    <!-- Timeline Dot -->
+                    <div class="absolute left-2 md:left-1/2 transform -translate-x-[7px] md:-translate-x-1/2 w-4 h-4 rounded-full bg-emerald-400 border-4 border-[#05010d] shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10"></div>
+                    <div class="md:w-[45%] hidden md:block"></div>
+                </div>
+            </div>
+
+            <!-- Beautiful Quote -->
+            <div class="mt-16 reveal glass-panel-heavy rounded-2xl p-6 md:p-8 max-w-2xl mx-auto text-center border-l-4 border-rose-500 relative">
+                <span class="absolute top-2 left-4 text-rose-500/20 text-6xl font-serif">“</span>
+                <p class="text-base md:text-xl text-rose-200/90 leading-relaxed italic font-light px-6">
+                    "បងមិនចង់លុបអតីតកាលរបស់អូនទេ... បងគ្រាន់តែសង្ឃឹមថា ថ្ងៃណាមួយ បងអាចក្លាយជាផ្នែកមួយនៃអនាគតរបស់អូន។"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: ការសន្យារបស់បង -->
+    <section class="py-20 relative z-10 px-4 bg-gradient-to-b from-transparent via-[#0f041a]/40 to-transparent">
+        <div class="max-w-5xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex flex-col items-center mb-16 reveal">
+                <span class="text-rose-400 text-3xl mb-2">💫</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-rose-300 font-serif">ការសន្យារបស់បង</h2>
+                <p class="text-xs md:text-sm text-rose-300/80 mt-2 font-light">សេចក្តីស្មោះស្ម័គ្រ និងស្ថិរភាពដែលបងផ្ដល់ជូនអូន</p>
+                <div class="w-12 h-1 bg-rose-500/30 rounded-full mt-3"></div>
+            </div>
+
+            <!-- Promise Grid layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Promise Card 1 -->
+                <div class="reveal glass-card rounded-2xl p-6 md:p-8 flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0 border border-rose-500/20">
+                        🕊️
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-rose-100 font-serif mb-2">បងនឹងមិនប្រញាប់អូនទេ</h3>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+                            បងយល់ច្បាស់ថាការបង្ខំមិនអាចនាំមកនូវស្នេហាពិតទេ។ បងសប្បាយចិត្តនឹងដើរតាមដំណើរនៃបេះដូងរបស់អូនជានិច្ច។
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Promise Card 2 -->
+                <div class="reveal glass-card rounded-2xl p-6 md:p-8 flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0 border border-rose-500/20">
+                        🌸
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-rose-100 font-serif mb-2">បងនឹងគោរពការសម្រេចចិត្ត</h3>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+                            ទោះជាថ្ងៃមុខទៅជាយ៉ាងណា ការសម្រេចចិត្តរបស់អូនជាធំជានិច្ច។ សេចក្តីសុខផ្លូវចិត្តរបស់អូនសំខាន់ជាងអ្វីៗទាំងអស់។
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Promise Card 3 -->
+                <div class="reveal glass-card rounded-2xl p-6 md:p-8 flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0 border border-rose-500/20">
+                        💍
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-rose-100 font-serif mb-2">បងនឹងស្មោះត្រង់ជានិច្ច</h3>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+                            ចិត្តមួយថ្លើមមួយរបស់បងមិនប្រែប្រួលឡើយ។ បងចង់ឱ្យអូនដឹងថាយ៉ាងហោចណាស់មានបងម្នាក់ដែលនៅក្បែរអូន។
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Promise Card 4 -->
+                <div class="reveal glass-card rounded-2xl p-6 md:p-8 flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 flex-shrink-0 border border-rose-500/20">
+                        ✨
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-rose-100 font-serif mb-2">បងចង់ឃើញអូនមានសុភមង្គល</h3>
+                        <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+                            សុភមង្គល និងស្នាមញញឹមរបស់អូនជាគោលបំណងចម្បងបង្អស់របស់បង ទោះបីជាពេលខ្លះបងគ្រាន់តែជាអ្នកមើលពីចម្ងាយក្តី។
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: អនុស្សាវរីយ៍ -->
+    <section class="py-20 relative z-10 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Title -->
+            <div class="flex flex-col items-center mb-16 reveal">
+                <span class="text-rose-500 text-3xl mb-2">📸</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-rose-300 font-serif">អនុស្សាវរីយ៍ដ៏ផ្អែមល្ហែម</h2>
+                <p class="text-xs md:text-sm text-rose-300/80 mt-2 font-light">រាល់អនុស្សាវរីយ៍តូចៗដែលបានឆ្លងកាត់</p>
+                <div class="w-12 h-1 bg-rose-500/30 rounded-full mt-3"></div>
+            </div>
+
+            <!-- Polaroid Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                
+                <!-- Polaroid Photo 1 -->
+                    </div>
+                        <img style="width: 500px; height: 500px;" src="photo_2026-01-09_22-34-03.jpg" alt="First Meet" class="w-full h-auto rounded-sm shadow-md">
+                </div>
+
+                <!-- Polaroid Photo 2
+                </div>
+                        <img style="width: 500px; height: 500px;" src="photo_2026-01-09_22-34-03.jpg" alt="First Meet" class="w-full h-auto rounded-sm shadow-md">
+                </div>
+                <Polaroid Photo 3 -->
+                <!-- </div>
+                        <img style="width: 500px; height: 500px;" src="photo_2026-01-09_22-34-03.jpg" alt="First Meet" class="w-full h-auto rounded-sm shadow-md">
+                </div>  -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: រយៈពេលដែលបងស្រឡាញ់អូន (Countdown/Love Timer) -->
+    <section class="py-20 relative z-10 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal glass-panel-heavy rounded-3xl p-8 md:p-12 text-center relative overflow-hidden border-2 border-rose-500/20">
+                <!-- Glowing background behind timer -->
+                <div class="absolute w-[200px] h-[200px] rounded-full bg-rose-500/10 blur-[80px] -top-10 -left-10"></div>
+                <div class="absolute w-[200px] h-[200px] rounded-full bg-purple-500/10 blur-[80px] -bottom-10 -right-10"></div>
+
+                <!-- Title -->
+                <span class="text-rose-400 text-3xl mb-2 inline-block animate-pulse">⏳</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-rose-300 font-serif">រយៈពេលដែលបងស្រឡាញ់អូន</h2>
+                <p class="text-xs md:text-sm text-slate-400 mt-2 font-light">ចាប់តាំងពីថ្ងៃដំបូងដែលក្តីស្រឡាញ់បានកើតឡើង និងបន្តកើនឡើងជានិច្ច</p>
+                <div class="w-12 h-1 bg-rose-500/30 rounded-full mx-auto mt-3 mb-10"></div>
+
+                <!-- Floating Heart Decoration in Card -->
+                <div class="text-rose-500/30 text-xs mt-8 italic font-light">
+                    "រាល់វិនាទីដែលកន្លងផុតទៅ ក្តីស្រឡាញ់របស់បងមិនដែលថយចុះឡើយ"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: សំបុត្រចុងក្រោយ -->
+    <section class="py-24 relative z-10 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal glass-panel-heavy rounded-3xl p-8 md:p-16 border border-rose-500/30 shadow-[0_0_50px_rgba(244,63,94,0.15)] relative">
+                <!-- Glowing heart top right of envelope card -->
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-rose-500 flex items-center justify-center text-white text-xl shadow-glow">
+                    💌
+                </div>
+
+                <!-- Inner Content of Letter -->
+                <div class="pt-6 space-y-6 md:space-y-8 text-slate-200 leading-relaxed text-sm md:text-base font-light">
+                    <p class="text-2xl font-serif font-bold text-rose-200 text-glow">Lanh...</p>
+
+                    <p class="text-slate-200">
+                        បើថ្ងៃណាមួយ បេះដូងរបស់អូនលែងភ័យខ្លាច ហើយអូនសម្រេចចិត្តបើកទ្វារបេះដូងម្តងទៀត...
+                    </p>
+
+                    <p class="text-rose-200/90 font-medium">
+                        បងសង្ឃឹមថា មនុស្សដែលអូននឹកឃើញមុនគេ គឺជារូបបង។
+                    </p>
+
+                    <p class="text-slate-200">
+                        តែបើថ្ងៃនោះមិនមកដល់ទេ បងក៏មិនដែលស្តាយក្រោយដែលបានស្រឡាញ់អូននោះដែរ។
+                    </p>
+
+                    <p class="text-slate-300">
+                        ព្រោះស្នេហាពិត មិនមែនជាការខំប្រឹងដើម្បីកាន់កាប់មនុស្សដែលយើងស្រឡាញ់តែម្នាក់ឯងនោះទេ... ប៉ុន្តែជាការជូនពរឱ្យគេមានសេចក្ដីសុខ និងទទួលបានស្នាមញញឹមដ៏ពិតប្រាកដ ទោះបីជាថ្ងៃនោះគេមិនបានជ្រើសរើសយើងជាអ្នករួមដំណើរជាមួយក៏ដោយ។
+                    </p>
+
+                    <p class="text-rose-100 font-medium pt-4">
+                        អរគុណដែលបានធ្វើឱ្យបេះដូងរបស់បងរៀនស្គាល់ និងរៀនស្រឡាញ់នរណាម្នាក់ដោយភាពស្មោះត្រង់បំផុត។
+                    </p>
+
+                    <div class="pt-8 text-right space-y-2">
+                        <span class="block text-slate-400 text-xs">ពី... មនុស្សដែលនៅតែជ្រើសរើសអូន</span>
+                        <span class="block font-cursive text-4xl text-rose-400 text-glow">With all my heart 🤍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div id="lightbox" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <button class="absolute top-5 right-5 text-white/70 hover:text-white text-3xl" onclick="closeLightbox()">&times;</button>
+        <div class="max-w-2xl w-full bg-stone-100 text-[#2C2C2C] p-4 pb-8 rounded-sm shadow-2xl relative" onclick="event.stopPropagation()">
+            <!-- Photo inside -->
+            <div class="w-full aspect-square bg-[#0f041e] overflow-hidden flex items-center justify-center border-b border-stone-200 relative">
+                <svg class="w-16 h-16 text-rose-500/10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#05010d]/50 to-transparent"></div>
+            </div>
+            <div class="mt-4 text-center px-4">
+                <h4 id="lightbox-title" class="font-bold text-xl text-rose-600 font-serif"></h4>
+                <p id="lightbox-desc" class="text-stone-600 text-xs md:text-sm mt-2 leading-relaxed font-light"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="py-12 relative z-10 text-center border-t border-rose-500/10">
+        <div class="max-w-4xl mx-auto px-4 space-y-3">
+            <p class="text-rose-300/60 text-xs md:text-sm font-light">
+                រៀបចំឡើងដោយបេះដូង និងសេចក្តីគោរពជូនចំពោះ Lanh
+            </p>
+            <p class="text-xs text-rose-500/40">
+                Made with 💖 for Lanh &copy; 2026
+            </p>
+        </div>
+    </footer>
+
+
+    <script>
+        /* Ambient particles and flowers backdrop logic */
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        let stars = [];
+        let petals = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initBackgroundElements();
+        }
+
+        // Object classes for rendering
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.alpha = Math.random();
+                this.speed = Math.random() * 0.02 + 0.005;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.alpha += this.speed;
+                if (this.alpha > 1 || this.alpha < 0.2) {
+                    this.speed = -this.speed;
+                }
+            }
+        }
+
+        class FloatingHeart {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 10 + 6;
+                this.speed = Math.random() * 0.8 + 0.3;
+                this.alpha = Math.random() * 0.4 + 0.1;
+                this.angle = Math.random() * Math.PI * 2;
+                this.oscillationSpeed = Math.random() * 0.02 + 0.01;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#f43f5e';
+                ctx.beginPath();
+                
+                // Draw elegant small heart
+                const d = this.size;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(Math.sin(this.angle) * 0.15);
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-d / 2, -d / 2, -d, d / 3, 0, d);
+                ctx.bezierCurveTo(d, d / 3, d / 2, -d / 2, 0, 0);
+                
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.angle += this.oscillationSpeed;
+                this.x += Math.sin(this.angle) * 0.3;
+
+                // Reset position if out of screen
+                if (this.y < -50) {
+                    this.y = canvas.height + Math.random() * 100;
+                    this.x = Math.random() * canvas.width;
+                    this.alpha = Math.random() * 0.4 + 0.1;
+                }
+            }
+        }
+
+        class RosePetal {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -Math.random() * 100;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 0.6 + 0.4;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.rotation = Math.random() * 360;
+                this.spinSpeed = Math.random() * 2 - 1;
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                
+                // Draw a beautiful smooth curved petal shape
+                ctx.fillStyle = '#fda4af'; // soft rose color
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size * 1.5, Math.PI / 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw elegant soft crimson shading line on petal
+                ctx.strokeStyle = '#f43f5e';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.arc(-this.size/2, 0, this.size, 0, Math.PI / 3);
+                ctx.stroke();
+
+                ctx.restore();
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y / 30) * 0.2;
+                this.rotation += this.spinSpeed;
+
+                if (this.y > canvas.height + 50) {
+                    this.y = -50;
+                    this.x = Math.random() * canvas.width;
+                    this.rotation = Math.random() * 360;
+                }
+            }
+        }
+
+        function initBackgroundElements() {
+            stars = [];
+            particles = [];
+            petals = [];
+
+            const isMobile = window.innerWidth < 768;
+            const starCount = isMobile ? 40 : 100;
+            const heartCount = isMobile ? 15 : 35;
+            const petalCount = isMobile ? 10 : 25;
+
+            for (let i = 0; i < starCount; i++) {
+                stars.push(new Star());
+            }
+            for (let i = 0; i < heartCount; i++) {
+                particles.push(new FloatingHeart());
+            }
+            for (let i = 0; i < petalCount; i++) {
+                petals.push(new RosePetal());
+            }
+        }
+
+        function animateBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+
+            particles.forEach(heart => {
+                heart.update();
+                heart.draw();
+            });
+
+            petals.forEach(petal => {
+                petal.update();
+                petal.draw();
+            });
+
+            requestAnimationFrame(animateBackground);
+        }
+
+        // Initialize background canvas
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            animateBackground();
+        });
+
+
+        /* Mouse trail glowing cursor tracking */
+        const cursor = document.getElementById('custom-cursor');
+        const cursorBlur = document.getElementById('custom-cursor-blur');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Delayed smoothing for blurred halo
+            setTimeout(() => {
+                cursorBlur.style.left = e.clientX + 'px';
+                cursorBlur.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        // Hover scale feedback
+        const interactives = document.querySelectorAll('a, button, .glass-card, .polaroid-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.background = 'radial-gradient(circle, rgba(244,63,94,0.3) 0%, rgba(244,63,94,0) 70%)';
+                cursor.style.border = '1px solid rgba(244, 63, 94, 0.6)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'radial-gradient(circle, rgba(244,63,94,1) 0%, rgba(244,63,94,0) 70%)';
+                cursor.style.border = 'none';
+            });
+        });
+
+
+        /* Scroll Reveal Effect via IntersectionObserver */
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Special behavior for typewriter section
+                    if (entry.target.id === 'message-section' || entry.target.querySelector('#typed-text')) {
+                        startTypewriterOnce();
+                    }
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+
+        /* Typewriter text block details with optimal Khmer support */
+        const messageText = `អូន Lanh...
+
+បងមិនដឹងថា ថ្ងៃណាមួយអូននឹងអានសារនេះដោយស្នាមញញឹម ឬដោយទឹកភ្នែកទេ។ ប៉ុន្តែគ្រប់ពាក្យទាំងអស់ សុទ្ធតែចេញពីបេះដូងរបស់បង។
+
+បងដឹងថា បេះដូងរបស់អូននៅមិនទាន់ជាសះស្បើយ ហើយបងមិនដែលចង់បង្ខំអូនឱ្យទទួលយកបងឡើយ។
+
+បងគ្រាន់តែចង់ឱ្យអូនដឹងថា មានមនុស្សម្នាក់ដែលស្រឡាញ់អូនដោយការគោរព និងដោយភាពស្មោះត្រង់។`;
+
+        let typewriterStarted = false;
+        function startTypewriterOnce() {
+            if (typewriterStarted) return;
+            typewriterStarted = true;
+            
+            const targetElement = document.getElementById('typed-text');
+            let index = 0;
+            
+            function typeChar() {
+                if (index < messageText.length) {
+                    targetElement.textContent += messageText.charAt(index);
+                    index++;
+                    setTimeout(typeChar, 35); // Smooth natural typing speed
+                }
+            }
+            typeChar();
+        }
+
+
+        /* Polaroid Lightbox functions */
+        function openLightbox(imgSrc, title, desc) {
+            const lightbox = document.getElementById('lightbox');
+            const lTitle = document.getElementById('lightbox-title');
+            const lDesc = document.getElementById('lightbox-desc');
+            
+            lTitle.textContent = title;
+            lDesc.textContent = desc;
+            
+            lightbox.classList.remove('pointer-events-none');
+            lightbox.classList.add('opacity-100');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('pointer-events-none');
+            lightbox.classList.remove('opacity-100');
+        }
+
+        // Close on clicking outside lightbox window
+        document.getElementById('lightbox').addEventListener('click', closeLightbox);
+
+
+        /* COUNT UP LOVE TIMER (Duration of feeling/love) */
+        // Set fixed reference point: 01 January 2025
+        const loveStartDate = new Date("2025-01-01T00:00:00");
+
+        function updateLoveCounter() {
+            const now = new Date();
+            const diffInMs = now - loveStartDate;
+
+            const days = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffInMs / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diffInMs / 1000 / 60) % 60);
+            const seconds = Math.floor((diffInMs / 1000) % 60);
+
+            document.getElementById('timer-days').textContent = String(days).padStart(3, '0');
+            document.getElementById('timer-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('timer-minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('timer-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateLoveCounter, 1000);
+        updateLoveCounter(); // Initial trigger
+
+
+        /* Procedural synthesizer logic using Web Audio API (Ensures 100% music playback availability) */
+        let audioCtx = null;
+        let isPlaying = false;
+        let scheduleId = null;
+
+        // Clean arpeggio note frequencies representing soft piano chords
+        // Progression: Cmaj9, Am9, Fmaj9, G11
+        const chordProgressions = [
+            [130.81, 196.00, 261.63, 329.63, 392.00, 493.88], // Cmaj9
+            [110.00, 164.81, 220.00, 261.63, 329.63, 392.00], // Am9
+            [87.31,  130.81, 174.61, 218.27, 261.63, 349.23], // Fmaj9
+            [98.00,  146.83, 196.00, 246.94, 293.66, 392.00]  // G11
+        ];
+
+        function playPianoTone(freq, time, duration) {
+            if (!audioCtx) return;
+            
+            // Oscillator 1 (Sine base tone)
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, time);
+
+            // Subtle harmonic modulation
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(1000, time);
+            filter.frequency.exponentialRampToValueAtTime(150, time + duration);
+
+            // Envelope simulating smooth dynamic piano key hit
+            gainNode.gain.setValueAtTime(0, time);
+            gainNode.gain.linearRampToValueAtTime(0.2, time + 0.05); // attack
+            gainNode.gain.exponentialRampToValueAtTime(0.001, time + duration); // long romantic release
+
+            osc.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start(time);
+            osc.stop(time + duration);
+        }
+
+        let step = 0;
+        let currentChordIndex = 0;
+
+        function scheduler() {
+            while (nextNoteTime < audioCtx.currentTime + 0.3) {
+                const chord = chordProgressions[currentChordIndex];
+                const noteToPlay = chord[step % chord.length];
+                
+                // Slightly randomize duration to give a natural human feel
+                const duration = 2.5 + Math.random() * 0.5;
+                
+                playPianoTone(noteToPlay, nextNoteTime, duration);
+                
+                // Move notes at regular slow ambient pace (around 600ms per arpeggio note)
+                nextNoteTime += 0.55;
+                step++;
+                
+                // Change Chord every 8 notes
+                if (step % 8 === 0) {
+                    currentChordIndex = (currentChordIndex + 1) % chordProgressions.length;
+                    step = 0;
+                }
+            }
+            scheduleId = setTimeout(scheduler, 100);
+        }
+
+        let nextNoteTime = 0.0;
+
+        function startMusic() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            nextNoteTime = audioCtx.currentTime;
+            scheduler();
+        }
+
+        function stopMusic() {
+            clearTimeout(scheduleId);
+        }
+
+        // Toggle button behavior
+        const musicBtn = document.getElementById('music-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const musicIndicator = document.getElementById('music-indicator');
+
+        musicBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                // Play behavior
+                startMusic();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                musicIndicator.classList.remove('hidden');
+                isPlaying = true;
+            } else {
+                // Pause behavior
+                stopMusic();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                musicIndicator.classList.add('hidden');
+                isPlaying = false;
+            }
+        });
+    </script>
+</body>
+</html>
